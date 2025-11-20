@@ -14,15 +14,8 @@ for usuario in "$@"; do
       home=$(eval echo "~$usuario") #obtengo directorio personal de usuario
       if [ -d "$home" ]; then  #verifico que home exista
           mkdir -p "$home/directorio_iso"
-          for ((anio=2025; anio<2027;anio++)); do
-              mkdir -p "$home/directorio_iso/$anio"
-              for ((mes=1; mes<13; mes++)); do
-                  # Mes con dos dígitos
-                  mesF=$(printf "%02d" "$mes")
-                  mkdir -p "$home/directorio_iso/$anio/$mesF"
-                  touch "$home/directorio_iso/$anio/$mesF/archivo.txt"
-              done
-          done
+          mkdir -p "$home/directorio_iso"/{2025..2026}/{01..12}
+          touch "$home/directorio_iso"/{2025..2026}/{01..12}/archivo.txt
       fi
   fi
 done
